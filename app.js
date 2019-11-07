@@ -11,6 +11,7 @@ app.post("/webhook", (req, res) => {
   res.sendStatus(200);
 });
 app.listen(port);
+
 function reply(reply_token) {
   let headers = {
     "Content-Type": "application/json",
@@ -22,11 +23,10 @@ function reply(reply_token) {
     messages: [
       {
         type: "text",
-        text: "Hello"
-      },
-      {
-        type: "text",
-        text: "How are you?"
+        text: Math.floor(Math.random() * Math.floor(10000))
+          .toString()
+          .split("")
+          .join(" ")
       }
     ]
   });
