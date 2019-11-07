@@ -12,9 +12,13 @@ app.post("/webhook", (req, res) => {
 });
 app.listen(port);
 
-function randomNumber() { 
-  let number = Math.floor(Math.random() * Math.floor(9999) + 1000).toString().split("")
-  return number.join(" ");
+function randomNumber() {
+  let arr = [];
+  for (let i = 0; i < 4; i++) {
+    let number = Math.floor(Math.random() * 9) + 1;
+    arr.push(number);
+  }
+  return arr.join(" ");
 }
 
 function reply(reply_token) {
@@ -33,7 +37,7 @@ function reply(reply_token) {
       }
     ]
   });
-    request.post(
+  request.post(
     {
       url: "https://api.line.me/v2/bot/message/reply",
       headers: headers,
